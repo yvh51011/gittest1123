@@ -38,6 +38,54 @@
       </div>
     </header>
 
+    <section class="auth-bar" id="authBar" aria-live="polite">
+      <div class="auth-guest" id="authGuest">
+        <p class="auth-bar__text">계정으로 로그인하면 학습을 이어서 관리할 수 있어요.</p>
+        <button type="button" class="btn btn--ghost" id="btnOpenAuth">로그인 / 회원가입</button>
+      </div>
+      <div class="auth-user" id="authUser" hidden>
+        <div class="auth-user__info">
+          <span class="auth-user__label">로그인됨</span>
+          <strong class="auth-user__email" id="authUserEmail"></strong>
+          <span class="auth-user__meta" id="authUserMeta"></span>
+        </div>
+        <button type="button" class="btn btn--ghost" id="btnLogout">로그아웃</button>
+      </div>
+      <p class="auth-message" id="authMessage" hidden></p>
+      <p class="sync-status" id="syncStatus" hidden></p>
+    </section>
+
+    <div class="auth-modal" id="authModal" hidden>
+      <div class="auth-modal__backdrop" data-close-auth></div>
+      <div class="auth-modal__panel" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+        <div class="auth-modal__head">
+          <h2 id="authModalTitle">계정</h2>
+          <button type="button" class="btn btn--icon" id="btnCloseAuth" aria-label="닫기">×</button>
+        </div>
+        <div class="auth-mode-tabs">
+          <button type="button" class="auth-mode-tab is-active" data-auth-mode="login">로그인</button>
+          <button type="button" class="auth-mode-tab" data-auth-mode="signup">회원가입</button>
+        </div>
+        <form class="auth-form" id="authForm">
+          <label class="auth-field">
+            <span>이메일</span>
+            <input type="email" id="authEmail" name="email" required autocomplete="email" placeholder="you@example.com" />
+          </label>
+          <label class="auth-field">
+            <span>비밀번호</span>
+            <input type="password" id="authPassword" name="password" required autocomplete="current-password" minlength="6" placeholder="6자 이상" />
+          </label>
+          <p class="auth-form__hint" id="authFormHint">비밀번호는 Supabase에만 안전하게 전달되며, 이 앱에 저장되지 않습니다.</p>
+          <p class="auth-form__error" id="authFormError" hidden></p>
+          <button type="submit" class="btn btn--primary" id="authSubmit">로그인</button>
+        </form>
+        <p class="auth-verify" id="authVerifyHint" hidden>
+          가입 확인 메일을 보냈습니다. 메일함에서 인증 링크를 누른 뒤 다시 로그인해 주세요.
+          (스팸함도 확인해 보세요.)
+        </p>
+      </div>
+    </div>
+
     <nav class="tabs" role="tablist">
       <button class="tab is-active" data-mode="flash" role="tab" aria-selected="true">플래시카드</button>
       <button class="tab" data-mode="quiz" role="tab" aria-selected="false">퀴즈</button>
@@ -119,6 +167,6 @@
     </main>
   </div>
 
-  <script src="app.js"></script>
+  <script type="module" src="/app.js"></script>
 </body>
 </html>

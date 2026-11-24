@@ -567,6 +567,227 @@ body {
   padding: 32px 16px;
 }
 
+.auth-bar {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+  animation: rise 0.6s ease 0.04s both;
+}
+
+.auth-guest,
+.auth-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.auth-guest[hidden],
+.auth-user[hidden],
+.auth-message[hidden],
+.auth-form__error[hidden],
+.auth-verify[hidden] {
+  display: none !important;
+}
+
+.auth-bar__text {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.auth-user__info {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.auth-user__label {
+  font-size: 0.72rem;
+  color: var(--teal-deep);
+  font-weight: 500;
+}
+
+.auth-user__email {
+  font-size: 0.95rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.auth-user__meta {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.auth-message {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--teal-deep);
+}
+
+.auth-message.is-error {
+  color: var(--coral);
+}
+
+.sync-status {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+
+.sync-status.is-error {
+  color: var(--coral);
+}
+
+.sync-status.is-busy {
+  color: var(--teal-deep);
+}
+
+.sync-status[hidden] {
+  display: none !important;
+}
+
+body.is-syncing .btn--primary,
+body.is-syncing .btn--ghost:not(#btnLogout):not(#btnOpenAuth):not(#btnCloseAuth),
+body.is-syncing .btn--danger,
+body.is-syncing .choice {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.auth-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.auth-modal[hidden] {
+  display: none !important;
+}
+
+.auth-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 36, 32, 0.42);
+}
+
+.auth-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(420px, 100%);
+  padding: 22px;
+  border-radius: var(--radius);
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.auth-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.auth-modal__head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+}
+
+.auth-mode-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 4px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.auth-mode-tab {
+  border: 0;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 10px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.auth-mode-tab.is-active {
+  background: var(--surface-solid);
+  color: var(--teal-deep);
+  box-shadow: 0 2px 10px rgba(15, 60, 50, 0.08);
+}
+
+.auth-form {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-field {
+  display: grid;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.auth-field input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--ink);
+  outline: none;
+}
+
+.auth-field input:focus {
+  border-color: rgba(15, 118, 110, 0.55);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+}
+
+.auth-form__hint {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+.auth-form__error {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--coral);
+  line-height: 1.4;
+}
+
+.auth-verify {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--mint);
+  color: var(--teal-deep);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
 @media (max-width: 520px) {
   .header {
     flex-direction: column;
@@ -586,5 +807,11 @@ body {
 
   .add-form {
     grid-template-columns: 1fr;
+  }
+
+  .auth-guest,
+  .auth-user {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
